@@ -4,7 +4,11 @@
 
 <h2>{{  $project->title  }}</h2>
 
-<form action="">
+<form action="/projects/{{ $project->id }}" method="POST">
+
+    {{ method_field('PATCH') }}
+
+    @csrf
 
     <div class="field">
 
