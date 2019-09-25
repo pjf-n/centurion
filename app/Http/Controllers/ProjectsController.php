@@ -31,6 +31,14 @@ class ProjectsController extends Controller
 
     public function create()
     {
+
+        Project::create(
+            [
+                'title' => \request('title'),
+                'description' => \request('description')
+            ]
+        );
+
         return view('projects.create');
     }
 
@@ -39,11 +47,8 @@ class ProjectsController extends Controller
 
     }
 
-    public function update($id)
+    public function update(Project $project)
     {
-
-
-        $project = Project::find($id);
 
         $project->title = request('title');
 
@@ -60,11 +65,11 @@ class ProjectsController extends Controller
 
     }
 
-    public function edit($id)
+    public function edit(Project $project)
     {
 
 
-        $project = Project::find($id);
+        $project;
 
 
         return view('projects.edit', compact('project'));
