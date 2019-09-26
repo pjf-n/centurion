@@ -17,7 +17,7 @@
                     <label for="title" class="label">Title</label>
 
                     <div class="control">
-                        <input type="text" class="input" name="title" placeholder="Title">
+                        <input type="text" class="input" name="title" placeholder="Title" value="{{ $project->title }}">
                     </div>
 
                 </div>
@@ -27,7 +27,7 @@
                     <label for="description" class="label">Description</label>
 
                     <div class="control">
-                        <textarea name="description" class="textarea"></textarea>
+                        <textarea name="description" class="textarea" value="{{ $project->description }}"></textarea>
                     </div>
 
                 </div>
@@ -37,6 +37,24 @@
                     <div class="control">
 
                         <button type="submit" class="is-link button">Update Project</button>
+
+                    </div>
+
+                </div>
+
+            </form>
+
+            <form action="/projects/{{ $project->id }}" method="POST">
+
+                {{ method_field('DELETE') }}
+
+                @csrf
+
+                <div class="field">
+
+                    <div class="control">
+
+                        <button type="submit" class="is-link button is-danger">Delete Project</button>
 
                     </div>
 
