@@ -18,13 +18,8 @@ class ProjectsController extends Controller
 
     public function store()
     {
-        $project = new Project();
+        Project::create(request(['title', 'description']));
 
-        $project->title = \request('title');
-
-        $project->description = request('description');
-
-        $project->save();
 
         return redirect('/projects');
     }
@@ -32,19 +27,12 @@ class ProjectsController extends Controller
     public function create()
     {
 
-        Project::create(
-            [
-                'title' => \request('title'),
-                'description' => \request('description')
-            ]
-        );
-
         return view('projects.create');
     }
 
-    public function show()
+    public function show(Project $project)
     {
-
+        return view('projects.show', compact('project'));
     }
 
     public function update(Project $project)
@@ -60,17 +48,17 @@ class ProjectsController extends Controller
 
     }
 
-    public function destroy()
+    public function destroy(Project $project)
     {
 
+        $project->delete();
+
+        session()->flash('success', 'Project successfully deleted');
+        return view('projects.index');
     }
 
     public function edit(Project $project)
     {
-
-
-        $project;
-
 
         return view('projects.edit', compact('project'));
     }
