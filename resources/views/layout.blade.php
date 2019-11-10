@@ -10,10 +10,11 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <ul>
+            <ul class="mt-5">
                 <a href="/">Home</a>
                 <a href="/about">About</a>
                 <a href="/contact">Contact</a>
+                <a href="/projects">Projects</a>
             </ul>
         </div>
     </div>
